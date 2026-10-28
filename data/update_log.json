@@ -1,0 +1,138 @@
+[
+ {
+  "time": "2026-10-27 22:16:19",
+  "total": 9152,
+  "new": 9152,
+  "sources": {
+   "sref-midjourney": 4752,
+   "midlibrary": 4462
+  }
+ },
+ {
+  "time": "2026-10-27 22:17:00",
+  "total": 9210,
+  "new": 58,
+  "sources": {
+   "sref-midjourney": 4810,
+   "midlibrary": 4462
+  }
+ },
+ {
+  "time": "2026-10-27 22:18:10",
+  "total": 9210,
+  "new": 0,
+  "sources": {
+   "sref-midjourney": 4810,
+   "midlibrary": 4462
+  }
+ },
+ {
+  "time": "2026-10-27 22:19:09",
+  "total": 9210,
+  "new": 0,
+  "sources": {
+   "sref-midjourney": 4810,
+   "midlibrary": 4462
+  }
+ },
+ {
+  "time": "2026-10-27 22:32:04",
+  "total": 9380,
+  "new": 170,
+  "sources": {
+   "sref-midjourney": 4810,
+   "midlibrary": 4462,
+   "srefhunt": 178
+  }
+ },
+ {
+  "time": "2026-10-27 22:33:24",
+  "total": 9519,
+  "new": 139,
+  "sources": {
+   "sref-midjourney": 4949,
+   "midlibrary": 4462,
+   "srefhunt": 178
+  }
+ },
+ {
+  "time": "2026-10-27 22:39:43",
+  "total": 9519,
+  "new": 0,
+  "sources": {
+   "sref-midjourney": 4949,
+   "midlibrary": 4462,
+   "srefhunt": 178
+  }
+ },
+ {
+  "time": "2026-10-27 23:07:12",
+  "total": 9519,
+  "new": 0,
+  "sources": {
+   "sref-midjourney": 4949,
+   "midlibrary": 4462,
+   "srefhunt": 178
+  }
+ },
+ {
+  "time": "2026-10-27 23:28:40",
+  "total": 9519,
+  "new": 0,
+  "sources": {
+   "sref-midjourney": 4949,
+   "midlibrary": 4462,
+   "srefhunt": 178
+  }
+ },
+ {
+  "time": "2026-10-27 23:33:48",
+  "total": 9519,
+  "new": 0,
+  "sources": {
+   "sref-midjourney": 4949,
+   "midlibrary": 4462,
+   "srefhunt": 178
+  }
+ },
+ {
+  "time": "2026-10-27 23:34:19",
+  "total": 9519,
+  "new": 0,
+  "sources": {
+   "sref-midjourney": 4949,
+   "midlibrary": 4462,
+   "srefhunt": 178
+  }
+ },
+ {
+  "time": "2026-10-27 23:35:13",
+  "total": 9519,
+  "new": 0,
+  "sources": {
+   "sref-midjourney": 4949,
+   "midlibrary": 4462,
+   "srefhunt": 178
+  }
+ },
+ {
+  "time": "2026-10-27 23:41:06",
+  "total": 9519,
+  "new": 0,
+  "sources": {
+   "sref-midjourney": 4949,
+   "midlibrary": 4462,
+   "srefhunt": 178
+  }
+ },
+ {
+  "time": "2026-10-28 18:42:00",
+  "total": 9298,
+  "new": 0,
+  "sources": {
+   "sref-midjourney": 4728,
+   "midlibrary": 4462,
+   "srefhunt": 178
+  }
+ }
+]

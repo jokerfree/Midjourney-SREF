@@ -1,0 +1,1312 @@
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>SREF 风格画廊 · Midjourney Style Archive</title>
+		<style>
+			:root {
+				--paper: #f2ece1;
+				--paper2: #faf6ee;
+				--card: #fffdf8;
+				--ink: #1b1712;
+				--ink2: #453e34;
+				--muted: #857b6d;
+				--faint: #b3a897;
+				--line: #ddd2c0;
+				--line2: #e9e0d1;
+				--gold: #a4762f;
+				--gold2: #c39a55;
+				--serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, 'Songti SC', 'STSong', 'Noto Serif SC', serif;
+				--sans: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', system-ui, -apple-system, sans-serif;
+				--mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+			}
+			* {
+				box-sizing: border-box;
+			}
+			body {
+				overflow-x: hidden;
+				margin: 0;
+				color: var(--ink);
+				font-family: var(--sans);
+				background: var(--paper);
+				background-image:
+					radial-gradient(1200px 600px at 15% -10%, rgba(255, 255, 255, 0.75), transparent 60%),
+					radial-gradient(900px 500px at 95% 0%, rgba(196, 166, 116, 0.12), transparent 60%),
+					url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+				-webkit-font-smoothing: antialiased;
+			}
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+			button {
+				font-family: inherit;
+				cursor: pointer;
+				color: inherit;
+			}
+			::selection {
+				background: rgba(164, 118, 47, 0.22);
+			}
+			.wrap {
+				max-width: 1580px;
+				margin: 0 auto;
+				padding: 0 36px;
+			}
+
+			/* ---------------- masthead ---------------- */
+			.masthead {
+				padding: 26px 0 0;
+				border-bottom: 1px solid var(--line);
+			}
+			.topline {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: 16px;
+				font-family: var(--mono);
+				font-size: 10.5px;
+				letter-spacing: 0.22em;
+				text-transform: uppercase;
+				color: var(--muted);
+			}
+			.topline .rule {
+				flex: 1;
+				height: 1px;
+				background: var(--line);
+			}
+			.titleblock {
+				display: flex;
+				align-items: flex-end;
+				justify-content: space-between;
+				gap: 40px;
+				padding: 34px 0 26px;
+				flex-wrap: wrap;
+			}
+			h1 {
+				font-family: var(--serif);
+				font-weight: 400;
+				font-size: clamp(40px, 6.2vw, 86px);
+				line-height: 0.98;
+				margin: 0;
+				letter-spacing: -0.02em;
+			}
+			h1 em {
+				font-style: italic;
+				color: var(--gold);
+			}
+			h1 .cn {
+				display: block;
+				font-size: clamp(22px, 2.6vw, 34px);
+				letter-spacing: 0.34em;
+				color: var(--ink2);
+				margin-top: 14px;
+				font-family: var(--serif);
+			}
+			.lede {
+				max-width: 390px;
+				font-size: 13.5px;
+				line-height: 2;
+				color: var(--ink2);
+				margin: 0 0 6px;
+			}
+			.lede b {
+				font-weight: 600;
+			}
+			.lede .rule {
+				display: block;
+				width: 44px;
+				height: 1px;
+				background: var(--gold);
+				margin-bottom: 14px;
+			}
+
+			/* salon strip */
+			.salon {
+				position: relative;
+				overflow: hidden;
+				border-top: 1px solid var(--line);
+				border-bottom: 1px solid var(--line);
+				padding: 22px 0 18px;
+				background: rgba(255, 255, 255, 0.25);
+			}
+			.salon:before,
+			.salon:after {
+				content: '';
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				width: 120px;
+				z-index: 2;
+				pointer-events: none;
+			}
+			.salon:before {
+				left: 0;
+				background: linear-gradient(90deg, var(--paper), transparent);
+			}
+			.salon:after {
+				right: 0;
+				background: linear-gradient(-90deg, var(--paper), transparent);
+			}
+			.salon-track {
+				display: flex;
+				gap: 16px;
+				width: max-content;
+				animation: slide 90s linear infinite;
+			}
+			.salon:hover .salon-track {
+				animation-play-state: paused;
+			}
+			@keyframes slide {
+				from {
+					transform: translateX(0);
+				}
+				to {
+					transform: translateX(-50%);
+				}
+			}
+			.plate {
+				width: 152px;
+				flex: 0 0 auto;
+				background: var(--card);
+				border: 1px solid var(--line2);
+				padding: 8px 8px 7px;
+				box-shadow: 0 2px 6px rgba(60, 45, 25, 0.06);
+			}
+			.plate img {
+				width: 100%;
+				aspect-ratio: 4/5;
+				object-fit: cover;
+				object-position: 50% 32%;
+				display: block;
+				filter: saturate(0.88) contrast(0.98);
+			}
+			.plate span {
+				display: block;
+				font-family: var(--mono);
+				font-size: 8.5px;
+				letter-spacing: 0.06em;
+				color: var(--muted);
+				margin-top: 7px;
+				text-align: center;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
+			.catalog {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 34px;
+				padding: 20px 0 24px;
+				align-items: baseline;
+			}
+			.catalog div {
+				display: flex;
+				align-items: baseline;
+				gap: 8px;
+			}
+			.catalog b {
+				font-family: var(--serif);
+				font-weight: 400;
+				font-size: 26px;
+				letter-spacing: -0.01em;
+			}
+			.catalog i {
+				font-style: normal;
+				font-family: var(--mono);
+				font-size: 10px;
+				letter-spacing: 0.16em;
+				text-transform: uppercase;
+				color: var(--muted);
+			}
+
+			/* ---------------- controls ---------------- */
+			.toolbar {
+				position: sticky;
+				top: 0;
+				z-index: 50;
+				background: rgba(242, 236, 225, 0.92);
+				backdrop-filter: blur(14px);
+				-webkit-backdrop-filter: blur(14px);
+				border-bottom: 1px solid var(--line);
+			}
+			.controls {
+				display: flex;
+				align-items: center;
+				gap: 18px;
+				padding: 13px 0;
+				flex-wrap: wrap;
+			}
+			.search {
+				flex: 1 1 340px;
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				border-bottom: 1px solid var(--ink);
+				padding-bottom: 7px;
+				min-width: 240px;
+			}
+			.search svg {
+				flex: 0 0 auto;
+				opacity: 0.55;
+			}
+			.search input {
+				flex: 1;
+				border: 0;
+				background: transparent;
+				font-family: var(--serif);
+				font-size: 16px;
+				color: var(--ink);
+				outline: none;
+				padding: 0;
+			}
+			.search input::placeholder {
+				color: var(--faint);
+				font-style: italic;
+			}
+			.search kbd {
+				font-family: var(--mono);
+				font-size: 10px;
+				color: var(--muted);
+				border: 1px solid var(--line);
+				padding: 1px 5px;
+				border-radius: 3px;
+			}
+			.selwrap {
+				position: relative;
+				display: flex;
+				align-items: center;
+			}
+			.selwrap:after {
+				content: '▾';
+				position: absolute;
+				right: 2px;
+				font-size: 9px;
+				color: var(--muted);
+				pointer-events: none;
+			}
+			select {
+				appearance: none;
+				-webkit-appearance: none;
+				background: transparent;
+				border: 0;
+				border-bottom: 1px solid var(--line);
+				padding: 6px 20px 6px 0;
+				font-family: var(--sans);
+				font-size: 12px;
+				color: var(--ink2);
+				outline: none;
+				cursor: pointer;
+				letter-spacing: 0.03em;
+			}
+			select:focus {
+				border-color: var(--ink);
+			}
+			.solid {
+				border: 1px solid var(--ink);
+				background: transparent;
+				padding: 8px 14px;
+				font-size: 11.5px;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				transition: 0.18s;
+			}
+			.solid:hover {
+				background: var(--ink);
+				color: var(--paper2);
+			}
+
+			.chipbar {
+				padding: 0 0 12px;
+				background: rgba(242, 236, 225, 0.55);
+			}
+			.chips {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 6px;
+			}
+			.chip {
+				background: transparent;
+				border: 1px solid transparent;
+				border-radius: 999px;
+				padding: 5px 11px;
+				font-size: 11.5px;
+				color: var(--ink2);
+				letter-spacing: 0.02em;
+				transition: 0.15s;
+				display: flex;
+				gap: 6px;
+				align-items: center;
+			}
+			.chip em {
+				font-style: normal;
+				font-family: var(--mono);
+				font-size: 9.5px;
+				color: var(--faint);
+			}
+			.chip:hover {
+				border-color: var(--line);
+				color: var(--ink);
+			}
+			.chip.active {
+				background: var(--ink);
+				color: var(--paper2);
+			}
+			.chip.active em {
+				color: rgba(250, 246, 238, 0.55);
+			}
+
+			.meta-row {
+				display: flex;
+				align-items: baseline;
+				justify-content: space-between;
+				gap: 14px;
+				margin: 26px 0 18px;
+				flex-wrap: wrap;
+			}
+			.meta-row #count {
+				font-family: var(--serif);
+				font-size: 15px;
+				font-style: italic;
+				color: var(--ink2);
+			}
+			.meta-row .hint {
+				font-family: var(--mono);
+				font-size: 9.5px;
+				letter-spacing: 0.12em;
+				text-transform: uppercase;
+				color: var(--faint);
+			}
+
+			/* ---------------- gallery grid ---------------- */
+			.grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(232px, 1fr));
+				gap: 26px 22px;
+				padding-bottom: 30px;
+			}
+			.card {
+				background: var(--card);
+				border: 1px solid var(--line2);
+				padding: 10px 10px 12px;
+				transition:
+					transform 0.22s ease,
+					box-shadow 0.22s ease,
+					border-color 0.22s;
+				position: relative;
+				cursor: pointer;
+			}
+			.card:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 18px 36px -20px rgba(50, 38, 20, 0.45);
+				border-color: var(--line);
+			}
+			.mat {
+				position: relative;
+				overflow: hidden;
+				background: #efe8da;
+			}
+			.mat img {
+				width: 100%;
+				aspect-ratio: 1/1;
+				object-fit: cover;
+				object-position: 50% 38%;
+				display: block;
+				transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+				filter: saturate(0.95);
+			}
+			.card:hover .mat img {
+				transform: scale(1.035);
+			}
+			.mat .ph {
+				position: absolute;
+				inset: 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-family: var(--serif);
+				font-size: 34px;
+				color: rgba(0, 0, 0, 0.12);
+			}
+			.badge {
+				position: absolute;
+				left: 8px;
+				top: 8px;
+				font-family: var(--mono);
+				font-size: 8.5px;
+				letter-spacing: 0.14em;
+				text-transform: uppercase;
+				background: rgba(250, 246, 238, 0.88);
+				color: var(--ink2);
+				padding: 3px 6px;
+				border: 1px solid rgba(0, 0, 0, 0.06);
+			}
+
+			.cap {
+				padding: 11px 2px 0;
+			}
+			.no {
+				font-family: var(--mono);
+				font-size: 9px;
+				letter-spacing: 0.14em;
+				color: var(--faint);
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			.no button {
+				background: none;
+				border: 0;
+				font-family: var(--sans);
+				font-size: 10px;
+				color: var(--muted);
+				border-bottom: 1px solid transparent;
+				padding: 0;
+			}
+			.no button:hover {
+				color: var(--ink);
+				border-color: var(--ink);
+			}
+			.cap h3 {
+				font-family: var(--serif);
+				font-weight: 400;
+				font-size: 15.5px;
+				line-height: 1.4;
+				margin: 7px 0 6px;
+				display: -webkit-box;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+				min-height: 2.8em;
+				letter-spacing: 0.01em;
+			}
+			.code {
+				font-family: var(--mono);
+				font-size: 10.5px;
+				color: var(--gold);
+				letter-spacing: 0.02em;
+			}
+			.tags {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 8px;
+				margin-top: 7px;
+			}
+			.tag {
+				font-size: 10px;
+				color: var(--muted);
+				letter-spacing: 0.04em;
+			}
+			.tag + .tag:before {
+				content: '·';
+				margin: 0 5px 0 1px;
+				color: var(--faint);
+			}
+
+			.sentinel {
+				margin: 8px 0 40px;
+				height: 54px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-family: var(--mono);
+				font-size: 10px;
+				letter-spacing: 0.18em;
+				text-transform: uppercase;
+				color: var(--faint);
+			}
+			.sentinel.more {
+				cursor: pointer;
+				border: 1px solid var(--line);
+				color: var(--ink2);
+				transition: 0.18s;
+			}
+			.sentinel.more:hover {
+				border-color: var(--ink);
+				color: var(--ink);
+			}
+			.empty {
+				padding: 90px 0;
+				text-align: center;
+				font-family: var(--serif);
+				font-style: italic;
+				color: var(--muted);
+			}
+
+			/* ---------------- modal ---------------- */
+			dialog {
+				border: 0;
+				padding: 0;
+				background: transparent;
+				max-width: min(1080px, 94vw);
+				width: 100%;
+				color: var(--ink);
+			}
+			dialog::backdrop {
+				background: rgba(24, 20, 14, 0.72);
+				backdrop-filter: blur(4px);
+			}
+			.sheet {
+				background: var(--paper2);
+				border: 1px solid var(--line);
+				display: grid;
+				grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+				max-height: 90vh;
+				position: relative;
+				box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.5);
+			}
+			.visual {
+				background: #e9e2d4;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 26px;
+			}
+			.visual img {
+				max-width: 100%;
+				max-height: 74vh;
+				object-fit: contain;
+				box-shadow: 0 10px 30px rgba(40, 30, 15, 0.15);
+			}
+			.detail {
+				padding: 34px 34px 28px;
+				overflow: auto;
+			}
+			.detail .no {
+				justify-content: flex-start;
+				gap: 12px;
+				margin-bottom: 14px;
+			}
+			h2 {
+				font-family: var(--serif);
+				font-weight: 400;
+				font-size: 27px;
+				line-height: 1.25;
+				margin: 0 0 6px;
+				letter-spacing: -0.01em;
+			}
+			.alt {
+				font-size: 11.5px;
+				color: var(--muted);
+				margin: 0 0 18px;
+				font-style: italic;
+			}
+			.codebox {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				border-top: 1px solid var(--line);
+				border-bottom: 1px solid var(--line);
+				padding: 12px 0;
+				margin: 0 0 16px;
+			}
+			.codebox span {
+				flex: 1;
+				font-family: var(--mono);
+				font-size: 15px;
+				color: var(--gold);
+				letter-spacing: 0.02em;
+			}
+			.codebox button {
+				border: 1px solid var(--ink);
+				background: transparent;
+				padding: 5px 10px;
+				font-size: 10.5px;
+				letter-spacing: 0.06em;
+				transition: 0.15s;
+			}
+			.codebox button:hover {
+				background: var(--ink);
+				color: var(--paper2);
+			}
+			.detail .tags {
+				gap: 10px;
+				margin: 0 0 16px;
+			}
+			.detail .tag {
+				font-size: 11px;
+				color: var(--ink2);
+			}
+			.kv {
+				display: grid;
+				grid-template-columns: auto 1fr;
+				gap: 7px 18px;
+				font-size: 12px;
+				color: var(--ink2);
+				margin: 0 0 16px;
+				padding: 14px 0;
+				border-top: 1px solid var(--line2);
+			}
+			.kv b {
+				font-weight: 400;
+				font-family: var(--mono);
+				font-size: 9.5px;
+				letter-spacing: 0.12em;
+				text-transform: uppercase;
+				color: var(--faint);
+				padding-top: 2px;
+			}
+			.use {
+				font-size: 11.5px;
+				line-height: 1.9;
+				color: var(--muted);
+				border-left: 2px solid var(--gold2);
+				padding-left: 12px;
+				margin: 0 0 14px;
+			}
+			.use b {
+				color: var(--ink2);
+				font-weight: 500;
+				font-family: var(--mono);
+				font-size: 11px;
+			}
+			.prompt {
+				font-family: var(--mono);
+				font-size: 11px;
+				line-height: 1.8;
+				color: var(--ink2);
+				background: rgba(0, 0, 0, 0.03);
+				padding: 10px 12px;
+				max-height: 110px;
+				overflow: auto;
+				word-break: break-word;
+				white-space: pre-wrap;
+			}
+			.obs {
+				font-size: 11.5px;
+				line-height: 1.85;
+				color: var(--muted);
+				margin-top: 12px;
+				font-style: italic;
+			}
+			.obs:empty,
+			.alts:empty {
+				display: none;
+			}
+			.alts {
+				font-size: 11px;
+				color: var(--muted);
+				margin-top: 12px;
+				line-height: 1.8;
+			}
+			.alts code {
+				font-family: var(--mono);
+				color: var(--gold);
+				cursor: pointer;
+				border-bottom: 1px dotted var(--gold2);
+			}
+			.actions {
+				display: flex;
+				gap: 10px;
+				flex-wrap: wrap;
+				margin-top: 20px;
+			}
+			.btn {
+				border: 1px solid var(--ink);
+				background: transparent;
+				padding: 10px 16px;
+				font-size: 11px;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				transition: 0.18s;
+			}
+			.btn:hover {
+				background: var(--ink);
+				color: var(--paper2);
+			}
+			.btn.gold {
+				background: var(--ink);
+				color: var(--paper2);
+			}
+			.btn.gold:hover {
+				background: var(--gold);
+				border-color: var(--gold);
+			}
+			.close {
+				position: absolute;
+				right: 14px;
+				top: 10px;
+				border: 0;
+				background: transparent;
+				font-size: 22px;
+				color: var(--muted);
+				z-index: 3;
+			}
+			.close:focus,
+			.close:focus-visible {
+				outline: 0;
+			}
+			.close:hover {
+				color: var(--ink);
+			}
+
+			.toast {
+				position: fixed;
+				left: 50%;
+				bottom: 28px;
+				transform: translate(-50%, 14px);
+				background: var(--ink);
+				color: var(--paper2);
+				padding: 9px 20px;
+				font-size: 12px;
+				letter-spacing: 0.04em;
+				opacity: 0;
+				pointer-events: none;
+				transition: 0.22s;
+				z-index: 99;
+			}
+			.toast.show {
+				opacity: 1;
+				transform: translate(-50%, 0);
+			}
+
+			footer {
+				border-top: 1px solid var(--line);
+				margin-top: 10px;
+				padding: 30px 0 56px;
+				font-size: 11.5px;
+				line-height: 2;
+				color: var(--muted);
+			}
+			footer b {
+				color: var(--ink2);
+				font-weight: 500;
+			}
+			footer a {
+				border-bottom: 1px solid var(--line);
+				padding-bottom: 1px;
+			}
+			footer a:hover {
+				border-color: var(--ink);
+			}
+
+			@media (max-width: 860px) {
+				.wrap {
+					padding: 0 18px;
+				}
+				.titleblock {
+					display: block;
+					padding: 24px 0 20px;
+				}
+				h1 {
+					font-size: clamp(30px, 8.6vw, 42px);
+					line-height: 1.06;
+				}
+				h1 .cn {
+					font-size: 15px;
+					letter-spacing: 0.2em;
+					margin-top: 10px;
+				}
+				.lede {
+					margin-top: 18px;
+					max-width: none;
+					font-size: 12.5px;
+				}
+				.catalog {
+					gap: 12px 18px;
+				}
+				.catalog b {
+					font-size: 19px;
+				}
+				.grid {
+					grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+					gap: 16px 12px;
+				}
+				.cap h3 {
+					font-size: 13.5px;
+				}
+				.sheet {
+					grid-template-columns: 1fr;
+					max-height: 94vh;
+				}
+				.visual {
+					padding: 14px;
+				}
+				.visual img {
+					max-height: 36vh;
+				}
+				.detail {
+					padding: 22px;
+				}
+				.catalog {
+					gap: 20px;
+				}
+				.catalog b {
+					font-size: 20px;
+				}
+				.controls {
+					gap: 12px;
+				}
+				select {
+					font-size: 11.5px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<noscript>
+			<div class="wrap" style="padding-top: 14px">
+				<div style="border: 1px solid var(--gold2); padding: 16px 18px; line-height: 1.8; font-size: 14px">
+					<b style="color: var(--gold)">这个页面需要运行脚本，但当前环境禁用了脚本。</b><br />
+					如果是在文件预览面板里打开，请改用浏览器：双击 <b>index.html</b>，或运行 <b>打开资料库.cmd</b>。
+				</div>
+			</div>
+		</noscript>
+
+		<header class="masthead">
+			<div class="wrap">
+				<div class="topline">
+					<span>Midjourney Style Reference Archive</span>
+					<span class="rule"></span>
+					<span id="today">EST. 2026</span>
+				</div>
+
+				<div class="titleblock">
+					<h1>SREF <em>—</em> 风格画廊<span class="cn">THE STYLE GALLERY</span></h1>
+					<p class="lede">
+						<span class="rule"></span>
+						三个公开风格库的合辑：<b>Sref-Midjourney</b>、<b>Midlibrary</b>、<b>SrefHunt</b>。
+						去重、分类、标注中文，像翻阅一本作品图录那样挑选风格代码。
+					</p>
+				</div>
+			</div>
+
+			<div class="salon" aria-hidden="true"><div class="salon-track" id="salon"></div></div>
+
+			<div class="wrap">
+				<div class="catalog" id="catalog"></div>
+			</div>
+		</header>
+
+		<div class="toolbar">
+			<div class="wrap">
+				<div class="controls">
+					<label class="search">
+						<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+							<circle cx="11" cy="11" r="7"></circle>
+							<path d="M20 20l-3.5-3.5"></path>
+						</svg>
+						<input id="q" type="search" placeholder="搜索风格、代码、中文标签……" autocomplete="off" spellcheck="false" />
+						<kbd>/</kbd>
+					</label>
+					<div class="selwrap">
+						<select id="src" title="来源">
+							<option value="all">全部来源</option>
+							<option value="sref-midjourney">Sref-Midjourney</option>
+							<option value="midlibrary">Midlibrary</option>
+							<option value="srefhunt">SrefHunt</option>
+						</select>
+					</div>
+					<div class="selwrap">
+						<select id="sort" title="排序">
+							<option value="likes">按热度</option>
+							<option value="created">按最新</option>
+							<option value="title">按名称</option>
+							<option value="random">随机</option>
+						</select>
+					</div>
+					<button class="solid" id="copyAll">复制当前结果</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="chipbar">
+			<div class="wrap"><div class="chips" id="chips"></div></div>
+		</div>
+
+		<main class="wrap">
+			<div class="meta-row">
+				<div id="count">正在整理藏品…</div>
+			</div>
+			<div class="grid" id="grid"></div>
+			<div class="sentinel" id="sentinel"></div>
+			<div class="empty" id="empty" hidden>没有找到相应的作品。</div>
+		</main>
+
+		<footer>
+			<div class="wrap">
+				<div>
+					<b>藏品来源</b>　 <a href="https://srefhunt.com" target="_blank" rel="noopener">SrefHunt</a>　
+					<a href="https://sref-midjourney.com" target="_blank" rel="noopener">Sref-Midjourney</a>　
+					<a href="https://midlibrary.io/sref-codes" target="_blank" rel="noopener">Midlibrary</a>
+				</div>
+				<div>风格代码与预览图版权归原作者与原站点所有，本库仅作索引、去重与中文标注，供检索学习使用。</div>
+			</div>
+		</footer>
+
+		<dialog id="modal">
+			<div class="sheet">
+				<button class="close" id="closeModal" aria-label="关闭">×</button>
+				<div class="visual"><img id="mImg" alt="" /></div>
+				<div class="detail">
+					<div class="no"><span id="mNo"></span><span id="mSrc"></span></div>
+					<h2 id="mTitle"></h2>
+					<p class="alt" id="mAlt"></p>
+					<div class="codebox">
+						<span id="mCode"></span>
+						<button id="mCopy">复制</button>
+					</div>
+					<div class="tags" id="mTags"></div>
+					<div class="kv" id="mKv"></div>
+					<div class="use"><b>用法</b>　在提示词末尾加上 <b id="mUse"></b>，可继续叠加 <b>--sw</b>（0–1000）与 <b>--v 7</b> 微调。</div>
+					<div class="prompt" id="mPrompt"></div>
+					<div class="obs" id="mObs"></div>
+					<div class="alts" id="mAlts"></div>
+					<div class="actions">
+						<button class="btn gold" id="mCopyCode">复制风格代码</button>
+						<button class="btn" id="mCopyPrompt">复制提示词</button>
+						<a class="btn" id="mLink" target="_blank" rel="noopener">打开原站 ↗</a>
+					</div>
+				</div>
+			</div>
+		</dialog>
+
+		<div class="toast" id="toast"></div>
+
+		<script src="data/srefs.js"></script>
+		<script>
+			;(function () {
+				const DATA = window.SREF_DATA || []
+				const META = window.SREF_META || {}
+				const CAT = META.category_zh || {}
+
+				if (!Array.isArray(DATA) || !DATA.length) {
+					const c = document.getElementById('count')
+					if (c) c.textContent = '数据文件未加载'
+					const g = document.getElementById('grid')
+					if (g)
+						g.innerHTML = `<div style="grid-column:1/-1;border:1px solid #c39a55;padding:20px;line-height:1.9;font-size:14px">
+      <b>没有读到 data/srefs.js</b><br>请确认 index.html 同级 data 文件夹里有 srefs.js；不要只复制 index.html 单独打开。<br>
+      若文件齐全，运行 <b>打开资料库.cmd</b>，或执行 <b>python -m http.server 8000</b> 后访问 http://localhost:8000 。</div>`
+					return
+				}
+
+				const $ = (s) => document.querySelector(s)
+				const grid = $('#grid'),
+					sentinel = $('#sentinel'),
+					empty = $('#empty')
+				const state = { q: '', cat: 'all', src: 'all', sort: 'likes' }
+				const SRC_LABEL = { 'sref-midjourney': 'Sref-Midjourney', srefhunt: 'SrefHunt', midlibrary: 'Midlibrary' }
+				const BADGE = { 'sref-midjourney': 'SREF', srefhunt: 'SREFHUNT', midlibrary: 'MIDLIBRARY' }
+
+				// ---------- 预处理 ----------
+				DATA.forEach((r, i) => {
+					r._no = i + 1
+					r._s = [
+						r.code,
+						(r.alt_codes || []).join(' '),
+						r.title,
+						r.title_alt,
+						(r.tags || []).join(' '),
+						r.zh || '',
+						(r.keywords || []).join(' '),
+						r.prompt,
+						r.author,
+						r.obs || '',
+					]
+						.join(' ')
+						.toLowerCase()
+					r._img = r.thumb || (r.images && r.images[0]) || ''
+					r._t = r.created ? Date.parse(r.created) || 0 : 0
+				})
+
+				// ---------- 展墙 ----------
+				function renderSalon() {
+					const picks = DATA.filter((r) => r._img).slice(0, 26)
+					const track = $('#salon')
+					const plate = (r) => `<a class="plate" href="#" data-code="${r.code}">
+        <img loading="lazy" src="${esc(r._img)}" alt="${esc(r.title)}">
+        <span>${esc(r.title || '--sref ' + r.code)}</span></a>`
+					track.innerHTML = picks.map(plate).join('') + picks.map(plate).join('')
+					track.addEventListener('click', (e) => {
+						const a = e.target.closest('.plate')
+						if (!a) return
+						e.preventDefault()
+						const r = DATA.find((x) => x.code === a.dataset.code)
+						if (r) openModal(r)
+					})
+				}
+
+				// ---------- 目录信息 ----------
+				function renderCatalog() {
+					const sources = new Set(DATA.flatMap((r) => r.sources || [])).size
+					const cats = new Set(DATA.map((r) => r.category)).size
+					$('#catalog').innerHTML = [
+						['藏品', DATA.length.toLocaleString()],
+						['类别', cats],
+						['来源', sources],
+					]
+						.map(([k, v]) => `<div><b>${v}</b><i>${k}</i></div>`)
+						.join('')
+				}
+
+				// ---------- 分类 ----------
+				function renderChips() {
+					const counts = {}
+					DATA.forEach((r) => (counts[r.category] = (counts[r.category] || 0) + 1))
+					const order = Object.keys(counts).sort((a, b) => counts[b] - counts[a] || a.localeCompare(b))
+					const box = $('#chips')
+					box.innerHTML = ''
+					const mk = (id, label, n) => {
+						const b = document.createElement('button')
+						b.className = 'chip' + (state.cat === id ? ' active' : '')
+						b.innerHTML = `${label}<em>${n}</em>`
+						b.onclick = () => {
+							state.cat = id
+							box.querySelectorAll('.chip').forEach((c) => c.classList.remove('active'))
+							b.classList.add('active')
+							apply()
+						}
+						return b
+					}
+					box.appendChild(mk('all', '全部', DATA.length))
+					order.forEach((id) => box.appendChild(mk(id, CAT[id] || id, counts[id])))
+				}
+
+				// ---------- 过滤 ----------
+				let filtered = [],
+					shown = 0,
+					loadingTick = false
+
+				function compute() {
+					const q = state.q
+						.trim()
+						.toLowerCase()
+						.replace(/^--sref\s*/, '')
+						.replace(/^sref\s*/, '')
+					const terms = q ? q.split(/\s+/) : []
+					const out = DATA.filter((r) => {
+						if (state.cat !== 'all' && r.category !== state.cat) return false
+						if (state.src !== 'all' && !(r.sources || []).includes(state.src)) return false
+						if (terms.length && !terms.every((t) => r._s.includes(t))) return false
+						return true
+					})
+					if (state.sort === 'likes') out.sort((a, b) => b.likes - a.likes || b._t - a._t)
+					else if (state.sort === 'created') out.sort((a, b) => b._t - a._t || b.likes - a.likes)
+					else if (state.sort === 'title') out.sort((a, b) => (a.title || '').localeCompare(b.title || ''))
+					else out.sort(() => Math.random() - 0.5)
+					return out
+				}
+
+				function apply() {
+					filtered = compute()
+					shown = 0
+					grid.innerHTML = ''
+					empty.hidden = filtered.length > 0
+					$('#count').textContent =
+						filtered.length === DATA.length
+							? `陈列全部 ${DATA.length.toLocaleString()} 件`
+							: `陈列 ${filtered.length.toLocaleString()} 件 / 共 ${DATA.length.toLocaleString()} 件`
+					updateSentinel()
+					autoLoad()
+				}
+
+				function card(r) {
+					const el = document.createElement('article')
+					el.className = 'card'
+					const nm = r.sources && r.sources[0]
+					const tags = (r.tags || [])
+						.slice(0, 3)
+						.map((t) => `<span class="tag">${esc(t)}</span>`)
+						.join('')
+					el.innerHTML = `
+      <div class="mat">
+        ${r._img ? `<img loading="lazy" decoding="async" src="${esc(r._img)}" alt="${esc(r.title)}" onerror="this.style.display='none'">` : ''}
+        <span class="ph">${esc((r.title || r.code).slice(0, 1).toUpperCase())}</span>
+        <span class="badge">${esc(BADGE[nm] || 'SREF')}</span>
+      </div>
+      <div class="cap">
+        <div class="no"><span>No. ${String(r._no).padStart(4, '0')}</span><button class="cpy">复制代码</button></div>
+        <h3>${esc(r.title || '未命名风格')}</h3>
+        <div class="code">--sref ${r.code}</div>
+        <div class="tags">${tags}</div>
+      </div>`
+					el.querySelector('.cpy').onclick = (ev) => {
+						ev.stopPropagation()
+						copy('--sref ' + r.code)
+					}
+					el.onclick = () => openModal(r)
+					return el
+				}
+
+				const CHUNK = 48
+				function updateSentinel() {
+					if (shown >= filtered.length) {
+						sentinel.textContent = filtered.length ? `— 已陈列全部 ${filtered.length.toLocaleString()} 件 —` : ''
+						sentinel.classList.remove('more')
+					} else {
+						sentinel.textContent = `继续浏览 · 还有 ${(filtered.length - shown).toLocaleString()} 件`
+						sentinel.classList.add('more')
+					}
+				}
+				function renderMore() {
+					if (shown >= filtered.length) return
+					const slice = filtered.slice(shown, shown + CHUNK)
+					const frag = document.createDocumentFragment()
+					slice.forEach((r) => frag.appendChild(card(r)))
+					grid.appendChild(frag)
+					shown += slice.length
+					updateSentinel()
+				}
+				function nearBottom() {
+					const rect = sentinel.getBoundingClientRect()
+					const vh = window.innerHeight || document.documentElement.clientHeight || 800
+					return rect.top < vh + 900
+				}
+				function autoLoad() {
+					if (loadingTick) return
+					loadingTick = true
+					try {
+						let guard = 0
+						while (shown < filtered.length && nearBottom() && guard < 400) {
+							renderMore()
+							guard++
+						}
+					} finally {
+						loadingTick = false
+					}
+				}
+				function setupAutoLoad() {
+					window.addEventListener('scroll', autoLoad, { passive: true })
+					window.addEventListener('resize', autoLoad)
+					setInterval(autoLoad, 500)
+					sentinel.addEventListener('click', () => {
+						if (shown < filtered.length) {
+							renderMore()
+							autoLoad()
+						}
+					})
+				}
+
+				// ---------- 弹窗 ----------
+				const modal = $('#modal')
+				function openModal(r) {
+					$('#mImg').src = r._img || ''
+					$('#mImg').style.display = r._img ? 'block' : 'none'
+					$('#mNo').textContent = 'No. ' + String(r._no).padStart(4, '0')
+					$('#mSrc').textContent = (r.sources || []).map((s) => SRC_LABEL[s] || s).join(' / ')
+					$('#mTitle').textContent = r.title || '未命名风格'
+					$('#mAlt').textContent = r.title_alt ? '别名：' + r.title_alt : ''
+					$('#mCode').textContent = '--sref ' + r.code
+					$('#mUse').textContent = '--sref ' + r.code
+					$('#mTags').innerHTML = (r.tags || []).map((t) => `<span class="tag">${esc(t)}</span>`).join('')
+					$('#mKv').innerHTML = `
+      <b>类别</b><span>${esc(CAT[r.category] || '其他')}</span>
+      <b>热度</b><span>${r.likes ? r.likes.toLocaleString() + ' 赞' : '—'}</span>
+      <b>版本</b><span>${r.version ? 'v' + esc(r.version) : '—'}</span>
+      <b>作者</b><span>${esc(r.author || '—')}</span>
+      <b>收录</b><span>${esc(r.first_seen || '')}</span>`
+					$('#mPrompt').textContent = r.prompt || '该来源未提供示例提示词。'
+					$('#mObs').textContent = r.obs ? '风格观察：' + r.obs : ''
+					const alts = r.alt_codes || []
+					$('#mAlts').innerHTML = alts.length
+						? '同风格的其他代码（点击复制）：' + alts.map((c) => `<code data-c="${c}">--sref ${c}</code>`).join('　')
+						: ''
+					$('#mAlts')
+						.querySelectorAll('code')
+						.forEach((el) => {
+							el.onclick = () => copy('--sref ' + el.dataset.c)
+						})
+					$('#mLink').href = r.source_url || '#'
+					$('#mCopyCode').onclick = () => copy('--sref ' + r.code)
+					$('#mCopyPrompt').onclick = () => copy(((r.prompt || '') + ' ').trim() + ' --sref ' + r.code)
+					modal.showModal()
+				}
+				$('#closeModal').onclick = () => modal.close()
+				modal.addEventListener('click', (e) => {
+					if (e.target === modal) modal.close()
+				})
+
+				// ---------- 工具 ----------
+				function esc(s) {
+					return String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c])
+				}
+				function copy(text) {
+					const done = () => toast('已复制 ' + text.slice(0, 40) + (text.length > 40 ? '…' : ''))
+					if (navigator.clipboard && window.isSecureContext) {
+						navigator.clipboard
+							.writeText(text)
+							.then(done)
+							.catch(() => fallback())
+					} else fallback()
+					function fallback() {
+						const ta = document.createElement('textarea')
+						ta.value = text
+						ta.style.cssText = 'position:fixed;left:-9999px'
+						document.body.appendChild(ta)
+						ta.select()
+						try {
+							document.execCommand('copy')
+							done()
+						} catch (e) {
+							toast('复制失败')
+						}
+						ta.remove()
+					}
+				}
+				let toastTimer
+				function toast(msg) {
+					const t = $('#toast')
+					t.textContent = msg
+					t.classList.add('show')
+					clearTimeout(toastTimer)
+					toastTimer = setTimeout(() => t.classList.remove('show'), 1800)
+				}
+
+				// ---------- 事件 ----------
+				let qTimer
+				$('#q').addEventListener('input', (e) => {
+					clearTimeout(qTimer)
+					qTimer = setTimeout(() => {
+						state.q = e.target.value
+						apply()
+					}, 140)
+				})
+				document.addEventListener('keydown', (e) => {
+					if (e.key === '/' && document.activeElement !== $('#q')) {
+						e.preventDefault()
+						$('#q').focus()
+					}
+					if (e.key === 'Escape' && document.activeElement === $('#q')) {
+						$('#q').value = ''
+						state.q = ''
+						apply()
+					}
+				})
+				$('#src').onchange = (e) => {
+					state.src = e.target.value
+					apply()
+				}
+				$('#sort').onchange = (e) => {
+					state.sort = e.target.value
+					apply()
+				}
+				$('#copyAll').onclick = () => {
+					const codes = filtered.map((r) => '--sref ' + r.code)
+					if (!codes.length) return toast('当前没有可复制的作品')
+					copy(codes.join('\n'))
+				}
+
+				// ---------- 启动 ----------
+				;(function initFromHash() {
+					const h = new URLSearchParams((location.hash || '').replace(/^#/, ''))
+					if (h.get('q')) {
+						state.q = h.get('q')
+						$('#q').value = state.q
+					}
+					if (h.get('cat')) state.cat = h.get('cat')
+					if (h.get('src')) {
+						state.src = h.get('src')
+						$('#src').value = state.src
+					}
+				})()
+				renderCatalog()
+				renderSalon()
+				renderChips()
+				setupAutoLoad()
+				apply()
+			})()
+		</script>
+	</body>
+</html>
